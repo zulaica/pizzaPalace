@@ -14,4 +14,14 @@ describe("Pizza", function() {
       expect(myPizza.pepperoni).to.equal(true);
     });
   });
+
+  describe("sliceIt", function() {
+    it("slices up the pizza", function() {
+      var myPizza = Object.create(Pizza);
+      myPizza.size(8);
+      myPizza.putPepperoni();
+      myPizza.sliceIt();
+      expect(myPizza.slices).to.equal(5);
+    });
+  });
 });
