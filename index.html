@@ -3,20 +3,51 @@
   <head>
     <meta charset="UTF-8">
     <link href="https://fonts.googleapis.com/css?family=Oswald:400,700|Playfair+Display:400,400italic|Lato:900" rel="stylesheet" />
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/themes/smoothness/jquery-ui.css" />
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" />
     <link href="css/styles.css" rel="stylesheet" type="text/css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
     <script src="js/scripts.js"></script>
     <title>Pizza Palace</title>
   </head>
   <body>
     <header>
       <h1>Pizza Palace</h1>
+      <h2>Every pizza is a personal pizza.<sup>&reg;</sup></h2>
     </header>
     <main>
-      <section>
+      <section id="order-form">
+        <form>
+          <h3>What kind of pizza would you like?</h3>
+          <fieldset>
+            <legend>How big would you like your pizza?</legend>
+            <select id="size">
+              <option value="8">Small (8")</option>
+              <option value="12">Medium (12")</option>
+              <option value="16">Large (16")</option>
+              <option value="20">American (20")</option>
+            </select>
+          </fieldset>
+          <fieldset>
+            <legend>Would you like some pepperoni on that?</legend>
+            <input type="checkbox" id="put-pepperoni">
+            <label for="put-pepperoni">Yes. Yes I would.</label>
+          </fieldset>
+          <fieldset>
+            <legend>Do you want us to slice your pizza up for you?</legend>
+            <input type="checkbox" id="slice-it">
+            <label for="slice-it">Yes. That would be helpful.</label>
+          </fieldset>
+          <button type="submit">Gimme pizza!</button>
+          <button type="reset">Start over</button>
+        </form>
       </section>
-      <section id="result">
+
+      <section id="receipt">
+        <h3>Your order</h3>
+        <p id="order"></p>
+        <a href="/">Order another pizza</a>
       </section>
     </main>
     <footer>
