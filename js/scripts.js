@@ -10,7 +10,7 @@ var Pizza = {
   sliceIt: function() {
     switch(this.size) {
       case 8:
-        this.pepperoni ? this.slices = 5 : this.slices = 4;
+        this.pepperoni ? this.slices = 7 : this.slices = 6;
         break;
       case 12:
         this.pepperoni ? this.slices = 9 : this.slices = 8;
@@ -24,3 +24,55 @@ var Pizza = {
     }
   }
 };
+
+$(document).ready(function() {
+  $("form").submit(function(event) {
+    event.preventDefault();
+
+    var sizeText  = "";
+    var typeText  = "";
+    var sliceText = "";
+
+    var size = parseInt($("#size").val());
+    var pizzaOrder = Object.create(Pizza);
+    pizzaOrder.size(size);
+    switch(pizzaOrder.size) {
+      case 8:
+        sizeText   = "a small ";
+        bakingTime = "24";
+        break;
+      case 12:
+        sizeText   = "a medium ";
+        bakingTime = "28";
+        break;
+      case 16:
+        sizeText   = "a large ";
+        bakingTime = "32";
+        break;
+      case 20:
+        sizeText   = "an All-American, jumboriffic ";
+        bakingTime = "36";
+        break;
+    }
+    if ($("#put-pepperoni").prop("checked")) { pizzaOrder.putPepperoni() };
+    pizzaOrder.pepperoni ? typeText = "pepperoni" : typeText = "cheese";
+    if ($("#slice-it").prop("checked")) { pizzaOrder.sliceIt() };
+    (pizzaOrder.slices > 1) ? sliceText = "Once it's done, we'll cut that up into " + pizzaOrder.slices + " slices." : sliceText = "Don't worry; we won't slice it up once it's done. We're not sure why you wouldn't want your pizza sliced&thinsp;&mdash;&thinsp;that's kinda weird. But, hey, who are we to judge?"
+
+    $("#order").append(
+      "<p>We've got " + sizeText + typeText + " pizza in the oven with your name on it!<br>" + sliceText + "</p>" +
+      "<p>Swing by and pick it up in&hellip; oh&hellip; let's say&hellip; " + bakingTime + " minutes.</p>"
+      );
+
+    $("form")[0].reset();
+    $("#order-form").slideUp(250).dequeue().fadeOut(250);
+    $("#receipt").slideDown(250).dequeue().fadeIn(250);
+  });
+
+  $('[href="/"]').click(function(event) {
+    event.preventDefault();
+    $("#order").empty();
+    $("#receipt").slideUp(270).dequeue().fadeOut(200);
+    $("#order-form").slideDown(250).dequeue().fadeIn(250);
+  });
+});

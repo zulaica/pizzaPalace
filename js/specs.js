@@ -21,7 +21,7 @@ describe("Pizza", function() {
       myPizza.size(8);
       myPizza.putPepperoni();
       myPizza.sliceIt();
-      expect(myPizza.slices).to.equal(5);
+      expect(myPizza.slices).to.equal(7);
     });
   });
 });
