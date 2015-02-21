@@ -30,12 +30,15 @@ $(document).ready(function() {
     event.preventDefault();
 
     var sizeText  = "";
-    var typeText  = "";
-    var sliceText = "";
+    var typeText  = "cheese";
+    var sliceText = "Don't worry; we won't slice it up once it's done. We're not sure why you wouldn't want your pizza sliced for you&thinsp;&mdash;&thinsp;that's kinda weird. But, hey, who are we to judge?";
 
     var size = parseInt($("#size").val());
     var pizzaOrder = Object.create(Pizza);
     pizzaOrder.size(size);
+    if ($("#put-pepperoni").prop("checked")) { pizzaOrder.putPepperoni() };
+    if ($("#slice-it").prop("checked")) { pizzaOrder.sliceIt() };
+
     switch(pizzaOrder.size) {
       case 8:
         sizeText   = "a small ";
@@ -54,10 +57,8 @@ $(document).ready(function() {
         bakingTime = "36";
         break;
     }
-    if ($("#put-pepperoni").prop("checked")) { pizzaOrder.putPepperoni() };
-    pizzaOrder.pepperoni ? typeText = "pepperoni" : typeText = "cheese";
-    if ($("#slice-it").prop("checked")) { pizzaOrder.sliceIt() };
-    (pizzaOrder.slices > 1) ? sliceText = "Once it's done, we'll cut that up into " + pizzaOrder.slices + " slices." : sliceText = "Don't worry; we won't slice it up once it's done. We're not sure why you wouldn't want your pizza sliced&thinsp;&mdash;&thinsp;that's kinda weird. But, hey, who are we to judge?"
+    if (pizzaOrder.pepperoni) { typeText = "pepperoni" };
+    if (pizzaOrder.slices > 1) { sliceText = "Once it's done, we'll cut that up into " + pizzaOrder.slices + " slices." };
 
     $("#order").append(
       "<p>We've got " + sizeText + typeText + " pizza in the oven with your name on it!<br>" + sliceText + "</p>" +
