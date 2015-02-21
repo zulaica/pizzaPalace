@@ -430,7 +430,6 @@ header h2::after {
 #receipt {
   display: none;
   border: 0;
-  text-align: center;
 }
 
 fieldset {

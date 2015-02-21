@@ -58,10 +58,10 @@ $(document).ready(function() {
         break;
     }
     if (pizzaOrder.pepperoni) { typeText = "pepperoni" };
-    if (pizzaOrder.slices > 1) { sliceText = "Once it's done, we'll cut that up into " + pizzaOrder.slices + " slices." };
+    if (pizzaOrder.slices > 1) { sliceText = "Once it's done we'll cut that up into " + pizzaOrder.slices + " slices to ensure optimal flavor." };
 
     $("#order").append(
-      "<p>We've got " + sizeText + typeText + " pizza in the oven with your name on it!<br>" + sliceText + "</p>" +
+      "<p>We've got " + sizeText + typeText + " pizza in the oven with your name on it!</p><p>" + sliceText + "</p>" +
       "<p>Swing by and pick it up in&hellip; oh&hellip; let's say&hellip; " + bakingTime + " minutes.</p>"
       );
 
