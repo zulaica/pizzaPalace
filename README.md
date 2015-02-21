@@ -1,5 +1,5 @@
 # Pizza Palace 🍕
-Pizza Palace is a simple website that allows a user to order a pizza.
+Pizza Palace is a simple website that allows a user to order a pizza. [See it in action.](http://zulaica.github.io/pizzaPalace/)
 
 ## Known Issues
 - The animation from the order receipt back to the order form is a bit janky.
